@@ -1,0 +1,73 @@
+.body{
+    background-color: #cccccc;
+}
+
+li a:hover {
+    background-color: #9999;
+    color: black;
+}
+li a{
+    color: black;
+}
+li a:visited{
+    color:#999966;
+}
+
+p{
+    font-family: serif;
+    font-style: italic;
+    font-weight: bolder;
+    line-height: 1.5; }
+
+ul{
+    list-style: none;
+}
+
+.leftListOnTheSide {
+    width: 300px;
+    height: 1300px;
+    float: left;
+    background-color:#c9c6c9;
+    border-radius: 8px;
+
+    list-style: none;
+    align-content: center;
+
+    font-style: italic;
+    line-height: 3.5;
+    font-size: 25px;
+}
+.visitorsBookEntry{
+    width: 300px;
+    height: auto;
+    float: right;
+    background-color: #cccccc;
+    border: #999996;
+    border-radius: 5px;
+    list-style: none;
+    align-content: center;
+
+    font-style: italic;
+    line-height: 3.5;
+    font-size: 25px;
+}
+
+.inhalt {
+    border: 5px #cccccc;;
+    background-color: #cccccc;
+}
+img{
+    width: 300px;
+    height: auto;
+}
+
+/* Reset Grundlayout.css bezüglich div-Elementen */
+
+div {
+    height: auto;
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
