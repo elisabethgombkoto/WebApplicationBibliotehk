@@ -95,7 +95,7 @@ public class UserID implements Serializable {
       Class.forName("com.mysql.jdbc.Driver");
       conn = DriverManager.getConnection("jdbc:mysql://mysql.fhv.at:3306/ego8769", "ego8769", "benblele");
       stmt=conn.createStatement();
-      ResultSet result = stmt.executeQuery("SELECT userID FROM login");
+      ResultSet result = stmt.executeQuery("SELECT userID, firstname, lastname FROM login");
 
       while (result.next() && !userIdExists) {
         String userID = result.getString("userID");
@@ -119,7 +119,7 @@ public class UserID implements Serializable {
       Class.forName("com.mysql.jdbc.Driver");
       conn = DriverManager.getConnection("jdbc:mysql://mysql.fhv.at:3306/ego8769", "ego8769", "benblele");
       stmt=conn.createStatement();
-      ResultSet result = stmt.executeQuery("SELECT userID, passwort FROM login");
+      ResultSet result = stmt.executeQuery("SELECT userID, passwort, firstname, lastname FROM login");
 
       while (result.next() && !exist) {
         String ID = result.getString("userID");
@@ -140,5 +140,40 @@ public class UserID implements Serializable {
       }
     }
     return exist;
+  }
+
+  public String getName(String userID, String passwort) {
+    Boolean exist = false;
+    String name = "";
+    Connection conn = null;
+    Statement stmt = null;
+    try {
+      Class.forName("com.mysql.jdbc.Driver");
+      conn = DriverManager.getConnection("jdbc:mysql://mysql.fhv.at:3306/ego8769", "ego8769", "benblele");
+      stmt=conn.createStatement();
+      ResultSet result = stmt.executeQuery("SELECT userID, passwort, firstname, lastname FROM login");
+
+      while (result.next() && !exist) {
+        String ID = result.getString("userID");
+        String pass = result.getString("passwort");
+        if (userID.equals(ID) && passwort.equals(pass)) {
+          String fname = result.getString("firstname");
+          String lname = result.getString("lastname");
+          name = fname +" "+ lname;
+          exist = true;
+        }
+      }
+
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        assert conn != null;
+        conn.close();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+    return name;
   }
 }

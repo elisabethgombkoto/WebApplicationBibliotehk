@@ -75,21 +75,21 @@
 
         <tr>
             <td >AAA00</td>
-            <td ><a href="../../Servlet/src/books/derfremde.html">Der Fremde</a></td>
+            <td ><a href="derfremde.jsp">Der Fremde</a></td>
             <td >1942, Paris, Verlagshaus Gallimard</td>
             <td >Albert Camus</td>
             <td >ja</td>
         </tr>
         <tr>
             <td >AAA01</td>
-            <td ><a href="../../Servlet/src/books/derprozess.html">Der Prozess</a></td>
+            <td ><a href="derprozess.jsp">Der Prozess</a></td>
             <td >Reclam Verlages</td>
             <td >Franz Kafka</td>
             <td >ja</td>
         </tr>
         <tr>
             <td >AAA02</td>
-            <td ><a href="../../Servlet/src/books/derkleineprinz.html">Der kleine Prinz</a></td>
+            <td ><a href="derkleineprinz.jsp">Der kleine Prinz</a></td>
             <td > dtv Verlagsgesellschaft</td>
             <td >Antoine de Saint-Exupé</td>
             <td >ja</td>

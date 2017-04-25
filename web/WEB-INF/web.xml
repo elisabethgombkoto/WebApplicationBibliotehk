@@ -49,6 +49,4 @@
         <filter-name>FilterLogIn</filter-name>
         <filter-class>bibliot.FilterLogIn</filter-class>
     </filter>
-
-
 </web-app>

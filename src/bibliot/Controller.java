@@ -107,12 +107,17 @@ public class Controller extends HttpServlet {
     String userID = request.getParameter("userID");
     String passwort = request.getParameter("password");
 
+
     UserID user = new UserID();
     user.set_passwort(passwort);
     user.set_userID(userID);
 
     if (user.tryLogin(userID, passwort)) {
+      String name = user.getName(userID, passwort);
+      System.out.println(name);
+      //String name = "Klara";
       session.setAttribute("loggedIn", "loggedIn");
+      session.setAttribute("name", name);
       session.setAttribute("history", new ArrayList<History>());
       RequestDispatcher dispatcher = context.getRequestDispatcher("/loginSuccessful.jsp");
       dispatcher.forward(request, response);
