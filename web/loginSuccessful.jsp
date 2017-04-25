@@ -22,18 +22,19 @@
     </div>
     <ul>
         <li><i class = "fa fa-home" aria-hidden="true"></i>
-            <a href = "controller?dispatchto=form">Home</a>
+            <a href = "home.jsp">Home</a>
         </li>
         <li>
             <i class="fa fa-pencil" aria-hidden="true"></i>
             <a href="formular.jsp">Formular</a>
         </li>
         <li>
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-            <a href="mailto:ego8769@students.fhv.at">Email</a>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <a href="blocked/evaluation.xhtml">Medien Bewertung</a>
         </li>
         <li>
-            <a href="blocked/visitorBook.jsp">Gästebuch</a>
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <a href="mailto:ego8769@students.fhv.at">Email</a>
         </li>
         <li>
             <a href="picture.html">Bild PopUp aufrufen</a>

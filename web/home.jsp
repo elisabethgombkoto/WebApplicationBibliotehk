@@ -21,6 +21,10 @@
         </li>
         <li>
             <i class="fa fa-pencil" aria-hidden="true"></i>
+            <a href="blocked/evaluation.xhtml">Medien Bewertung</a>
+        </li>
+        <li>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
             <a href="login.jsp">Login</a>
         </li>
         <li>
