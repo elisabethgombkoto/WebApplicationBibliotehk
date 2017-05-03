@@ -1,64 +1,101 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<head>
-    <meta charset="UTF-8">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
     <title>Der kleine Prinz</title>
-    <link rel="stylesheet" href="../css/design.css" media="screen">
-    <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <script type="text/javascript" src="../js/cookie.js"></script>
-</head>
-<body class="body" onload='createCookie("lastVisitedPage","derkleineprinz.html")'>
-<div class="leftListOnTheSide" onload="">
+    <link rel="stylesheet" href="css/design.css" media="screen"/>
+    <link rel="stylesheet" href="css/print.css" media="print"/>
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/tableStyle.css"  />
+</h:head>
+<h:body class="body" onload='createCookie("lastVisitedPage","derkleineprinz.html")'>
+<div class="leftListOnTheSide" >
     <div class="no-print">
-        <img src="../logo.JPG" alt="logo" id="logo" onclick="openWindow()">
+        <img src="logo.JPG" alt="logo" id="logo" onclick="openWindow()"/>
     </div>
     <ul>
-        <li><i class = "fa fa-home" aria-hidden="true"></i>
+        <li><i class = "fa fa-home" > </i>
             <a href = "controller?dispatchto=form">Home</a>
         </li>
         <li>
-            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <i class="fa fa-envelope-o" > </i>
             <a href="mailto:ego8769@students.fhv.at">Email</a>
         </li>
         <li>
-            <a href="visitorBook.jsp">Gästebuch</a>
+            <a href="blocked/visitorBook.jsp">Gästebuch</a>
         </li>
         <li>
-            <a href="../picture.html">Bild PopUp aufrufen</a>
+            <a href="picture.html">Bild PopUp aufrufen</a>
         </li>
         <li>
-            <a href="dynamicTable.jsp">DynamicTable</a>
+            <a href="blocked/dynamicTable.jsp">DynamicTable</a>
         </li>
         <li>
-            <a href="historie.jsp">Historie</a>
+            <a href="blocked/historie.jsp">Historie</a>
         </li>
         <li>
-            <i class="fa fa-th-list" aria-hidden="true"></i>
-            <a href="medientyp.jsp">Medientypen</a>
+            <i class="fa fa-th-list" > </i>
+            <a href="blocked/medientyp.jsp">Medientypen</a>
         </li>
-        <ul>
-            <li>
-                <i class="fa fa-book" aria-hidden="true"></i>
-                <a href="book.jsp">Bücher</a>
-            </li>
-            <li>
-                <i class="fa fa-gamepad" aria-hidden="true"></i>
-                <a href="game.jsp">Spiele</a>
-            </li>
-            <li>
-                <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                <a href="dvd.jsp">DVD</a>
-            </li>
-            <li>
-                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                <a href="journal.jsp">Zeitschriften</a>
-            </li>
-        </ul>
-
     </ul>
 </div>
+<!--
+Erweitern Sie Ihre Bibliotheksverwaltungs-Web-Site so,
+dass die von den Benutzern eingestellten Bewertungen auf den Seiten des entsprechenden Exemplars angezeigt werden.
+Dazu soll der Benutzer über eine Listbox mit Mehrfachauswahlmöglichkeit die Kriterien
+(z.B. Bewertung, Altersgruppe, Kommentar) auswählen können,
+zu dem ihm unterhalb der Exemplarinformationen die Rückmeldungen angezeigt werden.
+Die Daten für die Bewertungen sollen den Datenbanktabellen entnommen werden,
+in denen die entsprechenden Angaben zu dem Medium und den Bewertungen abgelegt wurden.
+Für diesen Teil genügt es, eine eigene Ausgabeseite in Form eines Facelets bereitzustellen,
+für das die Ausgabe für ein beispielhaftes Exemplar vorgesehen ist,
+bei dem sich der Benutzer die Kriterien anzeigen lassen kann,
+für die dann die Bewertungen ausgegeben werden.
+-->
+
 <div class="inhalt">
+
+    <h:selectManyListbox value="#{message.selectedEvaluations}">
+        <f:selectItems value="#{message.availableEvaluations}" />
+        <f:ajax render="tables" />
+    </h:selectManyListbox>
+
+    <h:panelGroup id="tables">
+        <h:dataTable value="#{message.allEvaluations}" var="evaluation"
+                     styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row">
+            <h:column rendered="#{message.selectedEvaluations.contains('name')}">
+                <!-- column header -->
+                <f:facet name="header"> name </f:facet>
+                <!-- row record -->
+                #{evaluation.name}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header"> medien </f:facet>
+                <!-- row record -->
+                #{evaluation.medien}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header"> age </f:facet>
+                <!-- row record -->
+                #{evaluation.age}
+            </h:column>
+            <h:column>
+                <!-- column header -->
+                <f:facet name="header"> comment </f:facet>
+                <!-- row record -->
+                #{evaluation.comment}
+            </h:column>
+        </h:dataTable>
+
+    </h:panelGroup>
 
     <h1>Der kleine Prinz</h1>
     <ul>
@@ -72,9 +109,9 @@
             ISBN:	9783423215701 (ISBN-10: 3423215704)
         </li>
     </ul>
-    <br>
+    <br/>
     <h2>Inhalt</h2>
-    <br>
+    <br/>
     Der Erzähler berichtet zunächst, wie er als sechsjähriges Kind seine erste Zeichnung vollendet hatte. Immer wenn er sie den „großen Leuten“ zeigte und sie fragte, ob ihnen das Bild nicht Angst mache, hätten sie geantwortet: „Warum sollen wir vor einem Hut Angst haben?“[6] Die Zeichnung hätte jedoch eine Riesenschlange dargestellt, die einen Elefanten verdaute.
 
     Zufällig begegnet der Erzähler, nachdem er mit seinem Flugzeug in der Sahara notgelandet ist, dem kleinen Prinzen, der ihn bittet: „Zeichne mir ein Schaf …“[7] Da der Prinz aber mit allen Zeichnungen, die der Flieger anfertigt, unzufrieden ist, zeichnet jener eine Kiste und erklärt: „Das Schaf, das du willst, steckt da drin.“[7] Damit ist der kleine Prinz zufrieden, er hat im Übrigen keine Mühe, die Zeichnung mit der Riesenschlange, die einen Elefanten verdaut, als solche zu erkennen.
@@ -92,5 +129,5 @@
     Nach diesen Berichten des kleinen Prinzen geschieht, was der Erzähler befürchtet hatte: Der letzte Tropfen seines Wasservorrats ist getrunken. Daher machen er und der kleine Prinz sich auf, einen Brunnen zu suchen, den sie schließlich auch finden. Da erkennt der kleine Prinz, dass ein ganzes Feld von Rosen nicht jene eine aufwiegen kann, die er zurückgelassen hat und bekommt Heimweh nach seinem Asteroiden. Er sucht eine Möglichkeit, zurückzugelangen. Er sagt: „Ich kann diesen Leib da nicht mitnehmen. Er ist zu schwer. […] Man soll nicht traurig sein um solche alten Hüllen.“[12] Er verabredet sich mit der Giftschlange am Brunnen, um von ihr gebissen zu werden. Danach fällt er lautlos in den Sand und ist am nächsten Morgen verschwunden. Der Flieger hat unterdessen seinen Flugzeugmotor repariert und kehrt in seine Welt zurück, bittet aber die Leser, ihn bei der weiteren Suche nach dem kleinen Prinzen zu unterstützen.
 
 </div>
-</body>
+</h:body>
 </html>
