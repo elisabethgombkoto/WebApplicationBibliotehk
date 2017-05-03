@@ -58,7 +58,7 @@ für die dann die Bewertungen ausgegeben werden.
 -->
 
 <div class="inhalt">
-
+<h:form>
     <h:selectManyListbox value="#{message.selectedEvaluations}">
         <f:selectItems value="#{message.availableEvaluations}" />
         <f:ajax render="tables" />
@@ -73,30 +73,29 @@ für die dann die Bewertungen ausgegeben werden.
                 <!-- column header -->
                 <f:facet name="header"> name </f:facet>
                 <!-- row record -->
-                #{evaluation.name}
+                ${evaluation.name}
             </h:column>
-            <h:column>
+            <h:column rendered="#{message.selectedEvaluations.contains('medien')}">
                 <!-- column header -->
                 <f:facet name="header"> medien </f:facet>
                 <!-- row record -->
-                #{evaluation.medien}
+                ${evaluation.medien}
             </h:column>
-            <h:column>
+            <h:column rendered="#{message.selectedEvaluations.contains('age')}">
                 <!-- column header -->
                 <f:facet name="header"> age </f:facet>
                 <!-- row record -->
-                #{evaluation.age}
+                ${evaluation.age}
             </h:column>
-            <h:column>
+            <h:column rendered="#{message.selectedEvaluations.contains('comment')}">
                 <!-- column header -->
                 <f:facet name="header"> comment </f:facet>
                 <!-- row record -->
-                #{evaluation.comment}
+                ${evaluation.comment}
             </h:column>
         </h:dataTable>
-
     </h:panelGroup>
-
+</h:form>
     <h1>Der kleine Prinz</h1>
     <ul>
         <li>
