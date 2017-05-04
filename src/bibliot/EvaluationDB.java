@@ -109,13 +109,13 @@ public class EvaluationDB {
 
     ArrayList<Evaluation> evaluations = new ArrayList<>();
     Connection conn;
-    Statement stmt;
+    PreparedStatement stmt;
     try {
       Class.forName("com.mysql.jdbc.Driver");
       conn = DriverManager.getConnection("jdbc:mysql://mysql.fhv.at:3306/ego8769", "ego8769", "benblele");
-      stmt=conn.createStatement();
-      //TODO select unschreiben
-      ResultSet result = stmt.executeQuery("SELECT name, medien, evaluation, age, comment FROM evaluation" );
+      stmt=conn.prepareStatement("SELECT * FROM evaluation where medien=?");
+      stmt.setString(1,title);
+      ResultSet result = stmt.executeQuery();
 
       while (result.next() ) {
 

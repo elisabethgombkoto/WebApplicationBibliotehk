@@ -89,7 +89,7 @@
         </tr>
         <tr>
             <td >AAA02</td>
-            <td ><a href="../derkleineprinz.xhtml">Der kleine Prinz</a></td>
+            <td ><a href="derkleineprinz.xhtml">Der kleine Prinz</a></td>
             <td > dtv Verlagsgesellschaft</td>
             <td >Antoine de Saint-Exupé</td>
             <td >ja</td>

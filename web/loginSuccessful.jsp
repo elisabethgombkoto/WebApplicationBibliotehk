@@ -72,7 +72,7 @@
 </div>
 <div class="inhalt">
     login successful
-    <a href="derkleineprinz.xhtml">der kleine Prinz </a>
+    <a href="blocked/derkleineprinz.xhtml">der kleine Prinz </a>
 </div>
 
 </body>

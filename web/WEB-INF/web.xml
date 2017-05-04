@@ -3,6 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>SomeServlet</servlet-name>
+        <servlet-class>bibliot.SomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SomeServlet</servlet-name>
+        <url-pattern>/someservlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>Servlet</servlet-name>
@@ -31,6 +39,7 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/controller</url-pattern>
