@@ -1,7 +1,6 @@
 package bibliot;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import java.util.Arrays;
 import java.util.List;
@@ -22,13 +21,10 @@ public class Evaluation  {
   private String evaluation;
   private String age;
   private String comment;
-  private List<Evaluation> evaluationsTogivenBook;
+  private List<Evaluation> evaluationsTogivenBookList;
   private EvaluationDB evaluationDb = new EvaluationDB();
   private String titel = "Der kleine Prinz";
 
-  public List<Evaluation> getEvaluationToGivenTitel(String title){
-    return evaluationsTogivenBook = evaluationDb.getAllEvaluations( title);
-  }
 
   private List<String> availableEvaluations = Arrays.asList("name", "medien", "evaluation", "age", "comment");
   private List<String> selectedEvaluations;
@@ -72,11 +68,20 @@ public class Evaluation  {
     this.comment = comment;
   }
 
-  public List<Evaluation> getEvaluationsTogivenBook(String titel) {
-    if(evaluationsTogivenBook == null){
-      evaluationsTogivenBook = evaluationDb.getAllEvaluations(titel);
-    }
-    return evaluationsTogivenBook;
+
+  public String getTitel() {
+    return titel;
   }
-  public void setEvaluationsTogivenBook(List<Evaluation> evaluationsTogivenBook) { this.evaluationsTogivenBook = evaluationsTogivenBook; }
+
+  public void setTitel(String titel) {
+    this.titel = titel;
+  }
+
+  public List<Evaluation> getEvaluationsTogivenBookList() {
+    if(evaluationsTogivenBookList == null){
+      evaluationsTogivenBookList = evaluationDb.getAllEvaluations(titel);
+    }
+    return evaluationsTogivenBookList;
+  }
+  public void setEvaluationsTogivenBookList(List<Evaluation> evaluationsTogivenBookList) { this.evaluationsTogivenBookList = evaluationsTogivenBookList; }
 }
