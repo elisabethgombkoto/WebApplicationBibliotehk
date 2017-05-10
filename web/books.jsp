@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Bücher</title>
-    <link rel="stylesheet" href="../css/design.css" media="screen">
-    <link rel="stylesheet" href="../css/print.css" media="print">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/design.css" media="screen">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-    <script type="text/javascript" src="../js/cookie.js"></script>
+    <script type="text/javascript" src="js/cookie.js"></script>
 </head>
 <body  class="body" onload="createCookie('lastVisitedPage', 'book.html')">
 <div class="leftListOnTheSide" onload="">
     <div class="no-print">
-        <img src="../logo.JPG" alt="logo" id="logo" onclick="openWindow()">
+        <img src="logo.JPG" alt="logo" id="logo" onclick="openWindow()">
     </div>
     <ul>
         <li><i class = "fa fa-home" aria-hidden="true"></i>
@@ -23,37 +23,37 @@
             <a href="mailto:ego8769@students.fhv.at">Email</a>
         </li>
         <li>
-            <a href="visitorBook.jsp">Gästebuch</a>
+            <a href="blocked/visitorBook.jsp">Gästebuch</a>
         </li>
         <li>
-            <a href="../picture.html">Bild PopUp aufrufen</a>
+            <a href="picture.html">Bild PopUp aufrufen</a>
         </li>
         <li>
-            <a href="dynamicTable.jsp">DynamicTable</a>
+            <a href="blocked/dynamicTable.jsp">DynamicTable</a>
         </li>
         <li>
-            <a href="historie.jsp">Historie</a>
+            <a href="blocked/historie.jsp">Historie</a>
         </li>
         <li>
             <i class="fa fa-th-list" aria-hidden="true"></i>
-            <a href="medientyp.jsp">Medientypen</a>
+            <a href="blocked/medientyp.jsp">Medientypen</a>
         </li>
         <ul>
             <li>
                 <i class="fa fa-book" aria-hidden="true"></i>
-                <a href="book.jsp">Bücher</a>
+                <a href="books.jsp">Bücher</a>
             </li>
             <li>
                 <i class="fa fa-gamepad" aria-hidden="true"></i>
-                <a href="game.jsp">Spiele</a>
+                <a href="blocked/game.jsp">Spiele</a>
             </li>
             <li>
                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                <a href="dvd.jsp">DVD</a>
+                <a href="blocked/dvd.jsp">DVD</a>
             </li>
             <li>
                 <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                <a href="journal.jsp">Zeitschriften</a>
+                <a href="blocked/journal.jsp">Zeitschriften</a>
             </li>
         </ul>
 
@@ -62,38 +62,21 @@
 <div class="inhalt">
 
     <h1>Bücher</h1>
-
-    <table border="2" width="60%" align=right>
-        <tr>
-
-            <td width="20&">Index</td>
-            <td width="20%">Titel</td>
-            <td width="20%">Erscheinung</td>
-            <td width="20&">Authoror</td>
-            <td width="20%">Verfügbar</td>
-        </tr>
-
-        <tr>
-            <td >AAA00</td>
-            <td ><a href="derfremde.jsp">Der Fremde</a></td>
-            <td >1942, Paris, Verlagshaus Gallimard</td>
-            <td >Albert Camus</td>
-            <td >ja</td>
-        </tr>
-        <tr>
-            <td >AAA01</td>
-            <td ><a href="derprozess.jsp">Der Prozess</a></td>
-            <td >Reclam Verlages</td>
-            <td >Franz Kafka</td>
-            <td >ja</td>
-        </tr>
-        <tr>
-            <td >AAA02</td>
-            <td ><a href="derkleineprinz.xhtml">Der kleine Prinz</a></td>
-            <td > dtv Verlagsgesellschaft</td>
-            <td >Antoine de Saint-Exupé</td>
-            <td >ja</td>
-        </tr>
+    <table>
+        <c:forEach items="${books}" var="book">
+            <tr>
+                <th>Titel</th>
+                <th>Index</th>
+                <th>Autor/in</th>
+                <th>verliehen bis</th>
+            </tr>
+            <tr>
+                <td><a href="${book.link}">${book.title}</a></td>
+                <td>${book.index}</td>
+                <td>${book.author}</td>
+                <td>${book.status}</td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 <p>Auf den Medientypenseiten soll zunächst der Medientyp und der Raum mit Regal, in dem er zu finden ist, angegeben werden. <br>
